@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../../assets/image.png';
+import MintBloomLogo from '../../assets/MintBloomLogo.png';
 
 const NavBar = () => {
   return (
@@ -7,8 +7,8 @@ const NavBar = () => {
       <div className="w-full flex justify-between items-center">
         {/* Left: Logo and Title */}
         <div className="flex items-center gap-3 cursor-pointer group">
-          <div className="bg-light-pastel-green/30 p-1.5 rounded-full transition-transform duration-500 group-hover:rotate-12">
-            <img src={logo} alt="Mint Bloom Logo" className="h-14 md:h-16 w-auto object-contain" />
+          <div className="bg-warm-white p-1.5 rounded-full transition-transform duration-500 group-hover:rotate-12">
+            <img src={MintBloomLogo} alt="Mint Bloom Logo" className="h-12 md:h-14 w-auto object-contain" />
           </div>
           <span className="font-brand text-3xl md:text-4xl text-muted-dark-green leading-none pt-1 transition-colors duration-300 group-hover:text-mint-green">
             mint bloom

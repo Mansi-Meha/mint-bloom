@@ -1,4 +1,6 @@
 import React from 'react';
+import WomenIllustration from '../../assets/WomenIllustration.png';
+
 
 /* ─── Illustration Components ─── */
 
@@ -259,11 +261,22 @@ const CheckIcon = () => (
 /* ─── Main Solution Section Component ─── */
 const SolutionSection = () => {
   return (
-    <section className="py-24 md:py-32 bg-warm-white relative overflow-hidden">
+    <section className="py-24 md:py-32 relative overflow-hidden">
+      
+      {/* Fixed Background Illustration with controlled opacity */}
+      <div 
+        className="absolute inset-0 z-0 opacity-25 pointer-events-none bg-cover bg-center"
+        style={{ 
+          backgroundImage: `url(${WomenIllustration})`,
+          backgroundAttachment: 'fixed'
+        }}
+      ></div>
 
       {/* Subtle decorative background blobs */}
-      <div className="absolute top-20 -left-32 w-72 h-72 bg-light-pastel-green/20 rounded-full blur-3xl pointer-events-none"></div>
-      <div className="absolute bottom-20 -right-32 w-80 h-80 bg-gold-beige/15 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute top-20 -left-32 w-72 h-72 bg-light-pastel-green/20 rounded-full blur-3xl pointer-events-none z-0"></div>
+      <div className="absolute bottom-20 -right-32 w-80 h-80 bg-gold-beige/15 rounded-full blur-3xl pointer-events-none z-0"></div>
+
+
 
       <div className="max-w-7xl w-[90%] mx-auto relative z-10">
 

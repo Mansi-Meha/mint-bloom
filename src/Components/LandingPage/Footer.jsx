@@ -27,7 +27,7 @@ const WhatsAppIcon = () => (
 /* ─── Main Footer ─── */
 const Footer = () => {
   return (
-    <footer className="relative bg-muted-dark-green overflow-hidden">
+    <footer className="relative bg-[#2F5242] overflow-hidden">
 
       {/* ── Decorative top wave / curve ── */}
       <div className="absolute top-0 left-0 right-0 -translate-y-[98%] pointer-events-none">
