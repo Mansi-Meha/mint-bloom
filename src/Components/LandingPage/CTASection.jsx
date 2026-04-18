@@ -49,7 +49,7 @@ const CTASection = () => {
         {/* ── Section Header ── */}
         <div className="text-center mb-14 md:mb-18 space-y-4">
           
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-muted-dark-green leading-tight">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl text-muted-dark-green font-serif leading-tight">
             Start Your <span className="font-brand text-3xl md:text-4xl lg:text-5xl text-muted-dark-green/85">Brand Journey</span> Today
           </h2>
           <p className="text-muted-dark-green/55 text-base py-2 lg:py-4 md:text-lg font-light max-w-xl mx-auto leading-relaxed">

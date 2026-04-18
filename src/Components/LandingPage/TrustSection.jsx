@@ -85,10 +85,10 @@ const TrustSection = () => {
           {/* ── LEFT: Text Content ── */}
           <div className="space-y-8">
             <div className="space-y-4">
-              <p className="text-mint-green font-medium text-sm tracking-widest uppercase">
+              <p className="text-mint-green font-serif text-sm tracking-widest uppercase">
                 Why Trust Us
               </p>
-              <h2 className="text-3xl md:text-4xl lg:text-[2.75rem] font-semibold text-muted-dark-green leading-tight">
+              <h2 className="text-3xl md:text-4xl lg:text-[2.75rem] font-serif text-muted-dark-green leading-tight">
                 Built for local women entrepreneurs, <span className="font-brand text-4xl md:text-5xl text-muted-dark-green/85">starting in Bihar</span>
               </h2>
             </div>

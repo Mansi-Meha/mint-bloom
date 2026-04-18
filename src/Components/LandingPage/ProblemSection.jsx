@@ -67,9 +67,9 @@ const ProblemSection = () => {
             </div>
             
             <div className="space-y-6">
-              <h2 className="text-3xl md:text-5xl lg:text-[3.5rem] font-semibold text-muted-dark-green leading-[1.15]">
-                It should be easier for <br className="hidden md:block" />
-                <span className="text-mint-green italic serif">local products</span> to reach <br className="hidden md:block" />
+              <h2 className="text-3xl md:text-5xl lg:text-[3.5rem]  text-muted-dark-green font-serif leading-[1.15]">
+                It should be easier for <br className="hidden md:block font-serif" />
+                <span className="text-mint-green italic font-serif">local products</span> to reach <br className="hidden md:block font-serif" />
                 the <span className="font-brand text-3xl md:text-4xl lg:text-5xl block mt-2 text-muted-dark-green/90">global market</span>
               </h2>
               

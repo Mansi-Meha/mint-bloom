@@ -1,6 +1,6 @@
 import React from 'react';
-import watercolorSplashes from '../../assets/watercolor-splashes.png';
-import watercolourBg from '../../assets/watercolour-bg.png';
+import watercolorSplashes from '../../assets/LandingPageImg/watercolor-splashes.png';
+import watercolourBg from '../../assets/LandingPageImg/watercolour-bg.png';
 
 
 
@@ -175,10 +175,10 @@ const WhoItsFor = () => {
 
         {/* ── Section Header ── */}
         <div className="text-center mb-16 md:mb-20 space-y-4">
-          <p className="text-mint-green font-medium text-sm tracking-widest uppercase">
+          <p className="text-mint-green font-serif text-sm tracking-widest uppercase">
             Who It's For
           </p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-muted-dark-green leading-tight">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-muted-dark-green leading-tight">
             Made for women building <br className="hidden md:block" />
             <span className="font-brand text-3xl md:text-4xl lg:text-5xl text-muted-dark-green/85">something of their own</span>
           </h2>

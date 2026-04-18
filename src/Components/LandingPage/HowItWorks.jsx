@@ -125,7 +125,7 @@ const HowItWorks = () => {
         {/* ── Section Header ── */}
         <div className="text-center mb-16 md:mb-24 space-y-4">
          
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-muted-dark-green leading-tight">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-muted-dark-green leading-tight">
             Simple steps to start your <br className="hidden md:block" />
             <span className="font-brand text-3xl md:text-4xl lg:text-5xl text-muted-dark-green/85">brand journey</span>
           </h2>

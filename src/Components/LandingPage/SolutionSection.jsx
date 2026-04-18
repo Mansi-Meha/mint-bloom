@@ -1,5 +1,5 @@
 import React from 'react';
-import WomenIllustration from '../../assets/WomenIllustration.png';
+import WomenIllustration from '../../assets/LandingPageImg/WomenIllustration.png';
 
 
 /* ─── Illustration Components ─── */
@@ -283,7 +283,7 @@ const SolutionSection = () => {
         {/* Section Header */}
         <div className="text-center mb-16 md:mb-20 space-y-5">
          
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-muted-dark-green leading-tight">
+          <h2 className="text-3xl md:text-4xl font-serif lg:text-5xl  text-muted-dark-green leading-tight">
             How <span className="font-brand text-2xl md:text-3xl lg:text-4xl text-muted-dark-green/85">Mint Bloom</span> helps <br className="hidden md:block" />
             your business grow
           </h2>

@@ -1,8 +1,9 @@
 import React from 'react';
-import logo from '../../assets/image.png';
+import { Link } from 'react-router-dom';
+import logo from '../../assets/LandingPageImg/MintBloomLogo.png';
 
 /* ─── Social / Contact Icons ─── */
-
+// ... (icons remain the same)
 const EmailIcon = () => (
   <svg viewBox="0 0 20 20" fill="none" className="w-5 h-5">
     <rect x="2" y="4" width="16" height="12" rx="3" stroke="currentColor" strokeWidth="1.4" />
@@ -46,14 +47,14 @@ const Footer = () => {
 
           {/* Brand */}
           <div className="flex flex-col items-center md:items-start gap-4">
-            <div className="flex items-center gap-3">
+            <Link to="/" className="flex items-center gap-3">
               <div className="bg-white/10 p-1 rounded-full backdrop-blur-sm">
                 <img src={logo} alt="Mint Bloom" className="h-11 w-auto object-contain brightness-125" />
               </div>
               <span className="font-brand text-[2rem] text-white leading-none pt-1">
                 Mint Bloom
               </span>
-            </div>
+            </Link>
             <p className="text-soft-sage/90 text-sm font-light text-center md:text-left max-w-xs leading-relaxed">
               Helping women turn everyday products into brands the world can discover.
             </p>
@@ -89,9 +90,12 @@ const Footer = () => {
             <ul className="space-y-2.5">
               {["Home", "How It Works", "Who It's For", "Apply Now"].map((link, i) => (
                 <li key={i}>
-                  <a href={`#${link.toLowerCase().replace(/\s+/g, '-').replace(/'/g, '')}`} className="text-soft-sage/90 text-sm font-light hover:text-mint-green transition-colors duration-300">
+                  <Link 
+                    to={`/#${link.toLowerCase().replace(/\s+/g, '-').replace(/'/g, '')}`} 
+                    className="text-soft-sage/90 text-sm font-light hover:text-mint-green transition-colors duration-300"
+                  >
                     {link}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

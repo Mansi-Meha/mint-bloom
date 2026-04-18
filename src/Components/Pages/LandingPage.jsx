@@ -6,6 +6,7 @@ import SolutionSection from '../LandingPage/SolutionSection';
 import HowItWorks from '../LandingPage/HowItWorks';
 import WhoItsFor from '../LandingPage/WhoItsFor';
 import TrustSection from '../LandingPage/TrustSection';
+import GrowthStoriesSection from '../LandingPage/GrowthStoriesSection';
 import CTASection from '../LandingPage/CTASection';
 import Footer from '../LandingPage/Footer';
 
@@ -20,6 +21,7 @@ const LandingPage = () => {
         <HowItWorks />
         <WhoItsFor />
         <TrustSection />
+        <GrowthStoriesSection />
         <CTASection />
       </main>
       <Footer />

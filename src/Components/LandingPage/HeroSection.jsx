@@ -1,6 +1,6 @@
 import React from 'react';
-import heroIllustration from '../../assets/hero-illustration.png';
-import watercolourBg from '../../assets/watercolour-bg.png';
+import heroIllustration from '../../assets/LandingPageImg/hero-illustration.png';
+import watercolourBg from '../../assets/LandingPageImg/watercolour-bg.png';
 
 const HeroSection = () => {
     return (
@@ -44,8 +44,8 @@ const HeroSection = () => {
                 {/* Right: Content */}
                 <div className="order-1 lg:order-2 flex flex-col items-start gap-10 animate-in fade-in slide-in-from-right-8 duration-1000 ease-out">
                     <div className="flex flex-col gap-6">
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-muted-dark-green leading-[1.1] tracking-tight">
-                            From <span className="text-mint-green italic serif">Local Product</span> <br className="hidden md:block" />
+                        <h1 className="text-4xl md:text-5xl lg:text-6xl  text-muted-dark-green font-serif leading-[1.1] tracking-tight">
+                            From <span className="text-mint-green italic font-serif">Local Product</span> <br className="hidden md:block font-serif" />
                             to <span className="font-brand text-3xl md:text-4xl lg:text-5xl block mt-2 text-muted-dark-green/90">Recognized Brand</span>
                         </h1>
                         <p className="text-xl md:text-2xl text-muted-dark-green/75 max-w-[580px] leading-relaxed font-light">
