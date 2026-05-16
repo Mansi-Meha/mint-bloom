@@ -2,6 +2,8 @@ import React from 'react';
 import heroIllustration from '../../assets/LandingPageImg/hero-illustration.png';
 import watercolourBg from '../../assets/LandingPageImg/watercolour-bg.png';
 
+
+
 const HeroSection = () => {
     return (
         <section id="home" className="relative w-full min-h-screen flex items-center bg-warm-white overflow-hidden pt-18 lg:pt-22">

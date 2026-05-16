@@ -17,7 +17,7 @@ const GrowthStoriesSection = () => {
   };
 
   return (
-    <section id="growth-stories" className="py-24 bg-warm-white relative overflow-hidden scroll-mt-24">
+    <section id="growth-stories" className="py-24 bg-light-mint/25 relative overflow-hidden scroll-mt-24">
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
 

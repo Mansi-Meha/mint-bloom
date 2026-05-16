@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import watercolorSplashes from '../../assets/LandingPageImg/watercolor-splashes.png';
+import watercolourBg from '../../assets/LandingPageImg/watercolour-bg.png';
 
 /* ─── WhatsApp Icon ─── */
 const WhatsAppIcon = () => (
@@ -39,6 +41,22 @@ const CTASection = () => {
 
   return (
     <section className="py-24 md:py-32 bg-warm-white relative overflow-hidden">
+
+        <div className="absolute inset-0 z-0 opacity-25 pointer-events-none bg-cover bg-center ">
+              <img 
+                src={watercolorSplashes} 
+                alt="" 
+                className="w-full h-full object-cover opacity-30 mix-blend-multiply" 
+                 
+              />
+            </div>
+            <div className="absolute inset-0 z-0 opacity-20 pointer-events-none mix-blend-multiply">
+              <img 
+                src={watercolourBg} 
+                alt="" 
+                className="w-full h-full object-cover" 
+              />
+            </div>
 
       {/* Decorative background */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-light-pastel-green/15 rounded-full blur-3xl pointer-events-none"></div>

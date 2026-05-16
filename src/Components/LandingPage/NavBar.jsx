@@ -32,12 +32,12 @@ const NavBar = () => {
 
         {/* Right: CTA Buttons */}
         <div className="flex items-center gap-3 md:gap-4">
-          <button className="hidden sm:block px-6 py-2.5 rounded-full text-sm font-semibold text-muted-dark-green border-1.5 border-soft-sage/40 hover:bg-gold-beige/20 hover:border-mint-green hover:text-mint-green transition-all duration-300 font-primary">
+          <Link to="/join-pilot" className="hidden sm:block px-6 py-2.5 rounded-full text-sm font-semibold text-muted-dark-green border-1.5 border-soft-sage/40 hover:bg-gold-beige/20 hover:border-mint-green hover:text-mint-green transition-all duration-300 font-primary">
             Join pilot
-          </button>
-          <button className="px-6 py-2.5 rounded-full text-sm font-semibold text-white bg-mint-green shadow-lg shadow-mint-green/20 hover:bg-muted-dark-green hover:shadow-xl hover:shadow-muted-dark-green/10 hover:-translate-y-0.5 transition-all duration-300 font-primary">
+          </Link>
+          <Link to="/login" className="px-6 py-2.5 rounded-full text-sm font-semibold text-white bg-mint-green shadow-lg shadow-mint-green/20 hover:bg-muted-dark-green hover:shadow-xl hover:shadow-muted-dark-green/10 hover:-translate-y-0.5 transition-all duration-300 font-primary flex items-center justify-center">
             Log In
-          </button>
+          </Link>
         </div>
       </div>
     </nav>
