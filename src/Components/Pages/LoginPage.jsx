@@ -1,9 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import MintBloomLogo from '../../assets/LandingPageImg/MintBloomLogo.png';
 import watercolourBg from '../../assets/LandingPageImg/watercolour-bg.png';
 
 const LoginPage = () => {
+    const navigate = useNavigate();
+
+    const handleLogin = (e) => {
+        e.preventDefault();
+        navigate('/dashboard');
+    };
+
     return (
         <div className="flex h-screen w-full bg-warm-white overflow-hidden font-primary relative">
             {/* BACK BUTTON (TOP LEFT) */}
@@ -99,7 +106,7 @@ const LoginPage = () => {
                     </div>
 
                     {/* Form */}
-                    <form className="flex flex-col gap-6" onSubmit={(e) => e.preventDefault()}>
+                    <form className="flex flex-col gap-6" onSubmit={handleLogin}>
                         <div className="space-y-5">
                             <div className="space-y-2">
                                 <label className="text-sm font-medium text-muted-dark-green/80 ml-1">Email address</label>

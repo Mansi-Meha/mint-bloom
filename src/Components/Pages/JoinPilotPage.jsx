@@ -5,7 +5,6 @@ import JoinPilotImg from '../../assets/JoinPilotImg.png';
 const JoinPilotPage = () => {
   const [formData, setFormData] = useState({
     founderName: '',
-    coFounders: [''],
     phoneNumber: '',
     companyName: '',
     whatYouSell: '',
@@ -14,11 +13,88 @@ const JoinPilotPage = () => {
     helpWith: [], // Branding, Packaging, Digital marketing
     sellOnline: '' // Yes/No
   });
-  
+
   const [submitted, setSubmitted] = useState(false);
+  const [showCategoryError, setShowCategoryError] = useState(false);
 
   const categories = [
-    'Eatables', 'Accessories', 'Apparels', 'Beauticians', 'Boutiques', 'Footwear', 'Other'
+    {
+      id: 'Eatables',
+      label: 'Eatables',
+      icon: (className) => (
+        <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5" />
+          <circle cx="8.5" cy="8.5" r=".5" fill="currentColor" />
+          <circle cx="16" cy="15.5" r=".5" fill="currentColor" />
+          <circle cx="12" cy="12" r=".5" fill="currentColor" />
+          <circle cx="11" cy="16" r=".5" fill="currentColor" />
+          <circle cx="17" cy="11" r=".5" fill="currentColor" />
+        </svg>
+      )
+    },
+    {
+      id: 'Accessories',
+      label: 'Accessories',
+      icon: (className) => (
+        <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M6 3h12l4 6-10 13L2 9z" />
+          <path d="M11 3 8 9l4 13 4-13-3-6" />
+          <path d="M2 9h20" />
+        </svg>
+      )
+    },
+    {
+      id: 'Apparels',
+      label: 'Apparels',
+      icon: (className) => (
+        <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M10 5a2 2 0 1 1 4 0c0 1.15-.83 2.16-1.95 2.28L12 7.37L2.47 18.28a1.5 1.5 0 0 0 .34 2.38l.41.2a1.5 1.5 0 0 0 1.83-.41L12 11.83l6.95 8.62a1.5 1.5 0 0 0 1.83.41l.41-.2a1.5 1.5 0 0 0 .34-2.38L12 7.37" />
+        </svg>
+      )
+    },
+    {
+      id: 'Beauticians',
+      label: 'Beauticians',
+      icon: (className) => (
+        <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
+          <path d="m5 3 1 2.5L8.5 6 6 7 5 9.5 4 7 1.5 6 4 5.5z" />
+          <path d="m19 17 1 2.5 2.5.5-2.5 1-1 2.5-1-2.5-2.5-1 2.5-1z" />
+        </svg>
+      )
+    },
+    {
+      id: 'Boutiques',
+      label: 'Boutiques',
+      icon: (className) => (
+        <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <path d="M16 10a4 4 0 0 1-8 0" />
+        </svg>
+      )
+    },
+    {
+      id: 'Footwear',
+      label: 'Footwear',
+      icon: (className) => (
+        <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M4 18h12c1 0 2-.5 2.5-1.5L21 11h-3.5L15 15l-6-3-5 3v3z" />
+          <path d="M21 11v7" />
+        </svg>
+      )
+    },
+    {
+      id: 'Other',
+      label: 'Other',
+      icon: (className) => (
+        <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="12" cy="12" r="10" />
+          <path d="M8 12h8" />
+          <path d="M12 8v8" />
+        </svg>
+      )
+    }
   ];
 
   const helpOptions = ['Branding', 'Packaging', 'Digital marketing'];
@@ -26,25 +102,6 @@ const JoinPilotPage = () => {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
-  const handleCoFounderChange = (index, value) => {
-    const newCoFounders = [...formData.coFounders];
-    newCoFounders[index] = value;
-    setFormData(prev => ({ ...prev, coFounders: newCoFounders }));
-  };
-
-  const addCoFounder = () => {
-    setFormData(prev => ({ ...prev, coFounders: [...prev.coFounders, ''] }));
-  };
-
-  const removeCoFounder = (index) => {
-    if (formData.coFounders.length <= 1) {
-      handleCoFounderChange(0, '');
-      return;
-    }
-    const newCoFounders = formData.coFounders.filter((_, i) => i !== index);
-    setFormData(prev => ({ ...prev, coFounders: newCoFounders }));
   };
 
   const handleCheckboxChange = (option) => {
@@ -59,8 +116,18 @@ const JoinPilotPage = () => {
   };
 
 
+  const handleCategorySelect = (categoryId) => {
+    setFormData(prev => ({ ...prev, category: categoryId }));
+    setShowCategoryError(false);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!formData.category) {
+      setShowCategoryError(true);
+      return;
+    }
+    setShowCategoryError(false);
     // In a real app, you'd send data to an API here
     console.log('Submission:', formData);
     setSubmitted(true);
@@ -71,11 +138,11 @@ const JoinPilotPage = () => {
 
   return (
     <div className="min-h-screen md:h-screen md:overflow-hidden w-full bg-white flex flex-col md:flex-row font-primary selection:bg-mint-green/20 relative">
-      
+
       {/* Back Button */}
       <div className="absolute top-6 left-6 z-30">
-        <Link 
-          to="/" 
+        <Link
+          to="/"
           className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 backdrop-blur-md shadow-sm border border-soft-sage/20 text-muted-dark-green hover:bg-mint-green hover:text-white transition-all group"
         >
           <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 transition-transform group-hover:-translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -90,7 +157,7 @@ const JoinPilotPage = () => {
         {/* Subtle Background Elements */}
         <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-mint-green/5 rounded-full blur-3xl"></div>
         <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-gold-beige/10 rounded-full blur-3xl"></div>
-        
+
         <div className="relative z-10 w-full max-w-lg space-y-12">
           <div className="space-y-6">
             <h2 className="text-mint-green font-brand text-5xl px-10 lg:text-6xl">Join Us Today</h2>
@@ -99,9 +166,9 @@ const JoinPilotPage = () => {
 
           <div className="relative group scale-105 transition-transform duration-700">
             <div className="absolute -inset-10 bg-mint-green/5 rounded-full blur-3xl group-hover:bg-mint-green/10 transition-colors duration-1000"></div>
-            <img 
-              src={JoinPilotImg} 
-              alt="Join Pilot Illustration" 
+            <img
+              src={JoinPilotImg}
+              alt="Join Pilot Illustration"
               className="relative w-full h-auto drop-shadow-2xl animate-float mix-blend-multiply"
             />
           </div>
@@ -110,7 +177,7 @@ const JoinPilotPage = () => {
             <p className="text-muted-dark-green/70 text-base leading-relaxed font-medium">
               Empowering women-led businesses in Patna to bloom digitally. Join our exclusive pilot program today.
             </p>
-            
+
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {['Direct Support', 'Sales Growth', 'Digital Growth', 'Expert Guidance'].map((perk, i) => (
                 <div key={perk} className="flex items-center gap-3 bg-white/80 p-3 rounded-2xl border border-soft-sage/10 shadow-sm hover:shadow-md transition-shadow">
@@ -144,61 +211,19 @@ const JoinPilotPage = () => {
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-10">
-              
-              {/* Names Section */}
-              <div className="space-y-6">
-                <div>
-                  <label className={labelClasses}>Founder's Name *</label>
-                  <input
-                    required
-                    type="text"
-                    name="founderName"
-                    value={formData.founderName}
-                    onChange={handleInputChange}
-                    placeholder="Enter founder's name"
-                    className={inputClasses}
-                  />
-                </div>
 
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between ml-1">
-                    <label className={labelClasses}>Co-Founder Name(s)</label>
-                    <button 
-                      type="button" 
-                      onClick={addCoFounder}
-                      className="flex items-center gap-2 text-xs font-bold text-mint-green hover:text-muted-dark-green transition-all hover:scale-105"
-                    >
-                      <span className="w-5 h-5 rounded-full bg-mint-green/10 flex items-center justify-center text-lg leading-none">+</span>
-                      Add Another
-                    </button>
-                  </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {formData.coFounders.map((name, index) => (
-                      <div key={index} className="flex gap-2 group animate-in slide-in-from-left-4 duration-300">
-                        <div className="relative flex-1">
-                          <input
-                            type="text"
-                            value={name}
-                            onChange={(e) => handleCoFounderChange(index, e.target.value)}
-                            placeholder={`Co-founder ${index + 1}`}
-                            className={inputClasses}
-                          />
-                        </div>
-                        {formData.coFounders.length > 1 && (
-                          <button 
-                            type="button" 
-                            onClick={() => removeCoFounder(index)}
-                            className="p-3 text-muted-dark-green/20 hover:text-red-400 transition-colors self-center"
-                          >
-                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-                            </svg>
-                          </button>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                </div>
+              {/* Founder Section */}
+              <div>
+                <label className={labelClasses}>Founder's Name *</label>
+                <input
+                  required
+                  type="text"
+                  name="founderName"
+                  value={formData.founderName}
+                  onChange={handleInputChange}
+                  placeholder="Enter founder's name"
+                  className={inputClasses}
+                />
               </div>
 
               {/* Contact & Company */}
@@ -244,22 +269,33 @@ const JoinPilotPage = () => {
 
               {/* Category */}
               <div className="space-y-4">
-                <div>
+                <div className="flex items-center justify-between">
                   <label className={labelClasses}>Category of Business *</label>
-                  <select
-                    required
-                    name="category"
-                    value={formData.category}
-                    onChange={handleInputChange}
-                    className={`${inputClasses} appearance-none bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%20fill%3D%22none%22%20stroke%3D%22%233F6F58%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E')] bg-[length:20px_20px] bg-[right_1.5rem_center] bg-no-repeat py-4`}
-                  >
-                    <option value="" disabled>Select category</option>
-                    {categories.map(cat => (
-                      <option key={cat} value={cat}>{cat}</option>
-                    ))}
-                  </select>
+                  {showCategoryError && (
+                    <span className="text-xs font-bold text-red-500 animate-pulse mr-1">Please select a category</span>
+                  )}
                 </div>
-                
+                <div className={`grid grid-cols-2 sm:grid-cols-3 gap-3 p-1 rounded-2xl transition-all duration-300 ${showCategoryError ? "ring-2 ring-red-400/50" : ""}`}>
+                  {categories.map(cat => {
+                    const isSelected = formData.category === cat.id;
+                    return (
+                      <button
+                        key={cat.id}
+                        type="button"
+                        onClick={() => handleCategorySelect(cat.id)}
+                        className={`flex items-center gap-3 px-4 py-3.5 rounded-2xl border text-[13px] font-bold transition-all duration-300 cursor-pointer ${
+                          isSelected
+                            ? "bg-mint-green border-mint-green text-white shadow-xl shadow-mint-green/20 scale-[1.02]"
+                            : "bg-white border-soft-sage/20 text-muted-dark-green hover:border-mint-green/50 hover:bg-light-mint/5 hover:scale-[1.01]"
+                        }`}
+                      >
+                        {cat.icon(`w-5 h-5 flex-shrink-0 transition-transform ${isSelected ? "text-white" : "text-mint-green"}`)}
+                        <span>{cat.label}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+
                 {formData.category === 'Other' && (
                   <div className="animate-in fade-in slide-in-from-top-4 duration-500">
                     <label className="block text-[12px] font-bold text-mint-green mb-2 ml-1 uppercase tracking-widest">Please specify category</label>
@@ -284,11 +320,10 @@ const JoinPilotPage = () => {
                       key={option}
                       type="button"
                       onClick={() => handleCheckboxChange(option)}
-                      className={`flex items-center justify-center px-4 py-2.5 rounded-xl border text-[13px] font-bold transition-all duration-500 ${
-                        formData.helpWith.includes(option)
-                          ? "bg-mint-green border-mint-green text-white shadow-xl shadow-mint-green/30 scale-[1.02]"
-                          : "bg-white border-soft-sage/20 text-muted-dark-green hover:border-mint-green/50"
-                      }`}
+                      className={`flex items-center justify-center px-4 py-2.5 rounded-xl border text-[13px] font-bold transition-all duration-500 ${formData.helpWith.includes(option)
+                        ? "bg-mint-green border-mint-green text-white shadow-xl shadow-mint-green/30 scale-[1.02]"
+                        : "bg-white border-soft-sage/20 text-muted-dark-green hover:border-mint-green/50"
+                        }`}
                     >
                       {option}
                     </button>
@@ -310,11 +345,10 @@ const JoinPilotPage = () => {
                         onChange={handleInputChange}
                         className="sr-only"
                       />
-                      <div className={`w-full py-2.5 rounded-xl border text-[13px] font-bold text-center transition-all duration-500 ${
-                        formData.sellOnline === option
-                          ? "bg-muted-dark-green border-muted-dark-green text-white shadow-xl scale-[1.02]"
-                          : "bg-white border-soft-sage/20 text-muted-dark-green group-hover:border-mint-green/50"
-                      }`}>
+                      <div className={`w-full py-2.5 rounded-xl border text-[13px] font-bold text-center transition-all duration-500 ${formData.sellOnline === option
+                        ? "bg-muted-dark-green border-muted-dark-green text-white shadow-xl scale-[1.02]"
+                        : "bg-white border-soft-sage/20 text-muted-dark-green group-hover:border-mint-green/50"
+                        }`}>
                         {option}
                       </div>
                     </label>
@@ -351,8 +385,8 @@ const JoinPilotPage = () => {
                 We've received your application. Our team will contact you on WhatsApp within 24 hours.
               </p>
             </div>
-            <Link 
-              to="/" 
+            <Link
+              to="/"
               className="px-12 py-5 rounded-full bg-gold-beige text-muted-dark-green font-bold text-lg hover:bg-mint-green hover:text-white transition-all duration-500 shadow-xl shadow-gold-beige/20 inline-flex items-center gap-3 group"
             >
               Go to Homepage
@@ -364,7 +398,8 @@ const JoinPilotPage = () => {
         )}
       </div>
 
-      <style dangerouslySetInnerHTML={{ __html: `
+      <style dangerouslySetInnerHTML={{
+        __html: `
         @keyframes float {
           0%, 100% { transform: translateY(0); }
           50% { transform: translateY(-20px); }
