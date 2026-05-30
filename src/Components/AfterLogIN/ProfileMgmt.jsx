@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import {
   AtSign, Globe, Link2, Play, Briefcase, Image,
   Mail, Phone, MessageCircle, MapPin, Camera, Upload,
@@ -68,7 +68,74 @@ const ProfileMgmt = () => {
     whatsappOrder: '',
   });
 
+  useEffect(() => {
+    const savedForm = localStorage.getItem('mb_profile_data');
+    if (savedForm) {
+      try {
+        setForm(JSON.parse(savedForm));
+      } catch (e) {
+        console.error(e);
+      }
+    } else {
+      // Default initial data for consistency
+      setForm({
+        businessName: 'Flora & Linen',
+        tagline: 'Ethical, slow-fashion clothing made from pure premium organic linen.',
+        category: 'Apparels',
+        location: 'Mumbai, India',
+        email: 'hello@floralinen.com',
+        phone: '+91 98765 43210',
+        whatsapp: '+91 98765 43210',
+        address: '102 Green Meadows, Bandra West, Mumbai',
+        instagram: 'instagram.com/floralinen',
+        facebook: 'facebook.com/floralinen',
+        linkedin: '',
+        pinterest: 'pinterest.com/floralinen',
+        youtube: '',
+        website: 'floralinen.com',
+        shopify: 'floralinen.myshopify.com',
+        shopWebsite: '',
+        amazon: '',
+        whatsappOrder: '',
+      });
+    }
+
+    const savedAvatar = localStorage.getItem('mb_profile_avatar');
+    if (savedAvatar) {
+      setAvatar(savedAvatar);
+    } else {
+      setAvatar("https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=200");
+    }
+
+    const savedBanner = localStorage.getItem('mb_profile_banner');
+    if (savedBanner) {
+      setBanner(savedBanner);
+    } else {
+      setBanner("https://images.unsplash.com/photo-1509319117193-57bab727e09d?auto=format&fit=crop&q=80&w=800");
+    }
+  }, []);
+
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+
+  const handleSave = () => {
+    localStorage.setItem('mb_profile_data', JSON.stringify(form));
+    localStorage.setItem('mb_profile_avatar', avatar || '');
+    localStorage.setItem('mb_profile_banner', banner || '');
+    alert('Changes saved successfully!');
+  };
+
+  const handlePreview = () => {
+    localStorage.setItem('mb_profile_data', JSON.stringify(form));
+    localStorage.setItem('mb_profile_avatar', avatar || '');
+    localStorage.setItem('mb_profile_banner', banner || '');
+    window.open(`/discover?brand=${encodeURIComponent(form.businessName || 'Flora & Linen')}`, '_blank');
+  };
+
+  const handleCancel = () => {
+    if (window.confirm('Discard unsaved changes?')) {
+      window.location.reload();
+    }
+  };
 
   /* file helpers */
   const readFile = (file, setter) => {
@@ -119,13 +186,13 @@ const ProfileMgmt = () => {
           </p>
         </div>
         <div className="flex gap-3">
-          <button className="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-soft-sage/40 text-muted-dark-green text-sm font-semibold hover:bg-soft-sage/10 transition-all">
+          <button onClick={handleCancel} className="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-soft-sage/40 text-muted-dark-green text-sm font-semibold hover:bg-soft-sage/10 transition-all cursor-pointer">
             <X className="w-4 h-4" /> Cancel
           </button>
-          <button className="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-mint-green/40 text-mint-green text-sm font-semibold hover:bg-mint-green/10 transition-all">
+          <button onClick={handlePreview} className="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-mint-green/40 text-mint-green text-sm font-semibold hover:bg-mint-green/10 transition-all cursor-pointer">
             <Eye className="w-4 h-4" /> Preview
           </button>
-          <button className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-mint-green text-white text-sm font-semibold hover:bg-muted-dark-green transition-all shadow-md shadow-mint-green/20">
+          <button onClick={handleSave} className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-mint-green text-white text-sm font-semibold hover:bg-muted-dark-green transition-all shadow-md shadow-mint-green/20 cursor-pointer">
             <Save className="w-4 h-4" /> Save Changes
           </button>
         </div>
@@ -293,14 +360,14 @@ const ProfileMgmt = () => {
       </SectionCard>
 
       {/* ── Bottom Action Bar ───────────────── */}
-      <div className="sticky bottom-6 flex justify-end gap-3">
-        <button className="flex items-center gap-2 px-6 py-3 rounded-xl border border-soft-sage/40 text-muted-dark-green text-sm font-semibold hover:bg-soft-sage/10 transition-all bg-white/80 backdrop-blur-sm shadow-sm">
+      <div className="sticky bottom-6 flex justify-end gap-3 z-30">
+        <button onClick={handleCancel} className="flex items-center gap-2 px-6 py-3 rounded-xl border border-soft-sage/40 text-muted-dark-green text-sm font-semibold hover:bg-soft-sage/10 transition-all bg-white/80 backdrop-blur-sm shadow-sm cursor-pointer">
           <X className="w-4 h-4" /> Cancel
         </button>
-        <button className="flex items-center gap-2 px-6 py-3 rounded-xl border border-mint-green/40 text-mint-green text-sm font-semibold hover:bg-mint-green/10 transition-all bg-white/80 backdrop-blur-sm shadow-sm">
+        <button onClick={handlePreview} className="flex items-center gap-2 px-6 py-3 rounded-xl border border-mint-green/40 text-mint-green text-sm font-semibold hover:bg-mint-green/10 transition-all bg-white/80 backdrop-blur-sm shadow-sm cursor-pointer">
           <Eye className="w-4 h-4" /> Preview Profile
         </button>
-        <button className="flex items-center gap-2 px-6 py-3 rounded-xl bg-mint-green text-white text-sm font-semibold hover:bg-muted-dark-green transition-all shadow-lg shadow-mint-green/25">
+        <button onClick={handleSave} className="flex items-center gap-2 px-6 py-3 rounded-xl bg-mint-green text-white text-sm font-semibold hover:bg-muted-dark-green transition-all shadow-lg shadow-mint-green/25 cursor-pointer">
           <Save className="w-4 h-4" /> Save Changes
         </button>
       </div>

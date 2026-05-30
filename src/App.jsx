@@ -4,10 +4,16 @@ import LandingPage from './Components/Pages/LandingPage'
 import StoriesPage from './Components/Pages/StoriesPage'
 import LoginPage from './Components/Pages/LoginPage'
 import JoinPilotPage from './Components/Pages/JoinPilotPage'
+import DiscoverPage from './Components/Pages/DiscoverPage'
 import AfterLogin from './Components/AfterLogIN/AfterLogin'
 import OverView from './Components/AfterLogIN/OverView'
 import ProfileMgmt from './Components/AfterLogIN/ProfileMgmt'
 import ProductCatalogue from './Components/AfterLogIN/ProductCatalogue'
+import AdminOverview from './Components/AdminDashboard/AdminOverview'
+import AdminBrands from './Components/AdminDashboard/AdminBrands'
+import AdminTracker from './Components/AdminDashboard/AdminTracker'
+import AdminStorefronts from './Components/AdminDashboard/AdminStorefronts'
+import AdminProducts from './Components/AdminDashboard/AdminProducts'
 import ScrollToHash from './Components/ScrollToHash'
 
 const App = () => {
@@ -19,6 +25,7 @@ const App = () => {
         <Route path="/stories" element={<StoriesPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/join-pilot" element={<JoinPilotPage />} />
+        <Route path="/discover" element={<DiscoverPage />} />
 
         {/* Dashboard nested routes */}
         <Route path="/dashboard" element={<AfterLogin />}>
@@ -26,6 +33,16 @@ const App = () => {
           <Route path="overview" element={<OverView />} />
           <Route path="profile" element={<ProfileMgmt />} />
           <Route path="products" element={<ProductCatalogue />} />
+        </Route>
+
+        {/* Admin Dashboard nested routes */}
+        <Route path="/admin" element={<AfterLogin />}>
+          <Route index element={<Navigate to="overview" replace />} />
+          <Route path="overview" element={<AdminOverview />} />
+          <Route path="brands" element={<AdminBrands />} />
+          <Route path="tracker" element={<AdminTracker />} />
+          <Route path="storefronts" element={<AdminStorefronts />} />
+          <Route path="products" element={<AdminProducts />} />
         </Route>
       </Routes>
     </Router>

@@ -11,6 +11,11 @@ const LoginPage = () => {
         navigate('/dashboard');
     };
 
+    const handleAdminLogin = (e) => {
+        e.preventDefault();
+        navigate('/admin');
+    };
+
     return (
         <div className="flex h-screen w-full bg-warm-white overflow-hidden font-primary relative">
             {/* BACK BUTTON (TOP LEFT) */}
@@ -142,12 +147,21 @@ const LoginPage = () => {
                             </Link>
                         </div>
 
-                        <button 
-                            type="submit"
-                            className="w-full py-4 mt-2 rounded-xl bg-mint-green text-white font-semibold text-lg shadow-lg shadow-mint-green/20 hover:bg-muted-dark-green hover:shadow-xl hover:shadow-muted-dark-green/15 hover:-translate-y-1 active:scale-95 transition-all duration-300"
-                        >
-                            Log In
-                        </button>
+                        <div className="grid grid-cols-2 gap-4 mt-2">
+                            <button 
+                                type="submit"
+                                className="w-full py-4 rounded-xl bg-mint-green text-white font-semibold text-base shadow-lg shadow-mint-green/20 hover:bg-muted-dark-green hover:shadow-xl hover:shadow-muted-dark-green/15 hover:-translate-y-0.5 active:scale-95 transition-all duration-300 cursor-pointer"
+                            >
+                                Log In
+                            </button>
+                            <button 
+                                type="button"
+                                onClick={handleAdminLogin}
+                                className="w-full py-4 rounded-xl bg-white border border-soft-sage text-muted-dark-green font-semibold text-base shadow-sm hover:border-mint-green hover:bg-light-mint/30 hover:-translate-y-0.5 active:scale-95 transition-all duration-300 cursor-pointer"
+                            >
+                                Admin Log In
+                            </button>
+                        </div>
                     </form>
 
                     {/* Footer Links */}

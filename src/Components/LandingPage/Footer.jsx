@@ -88,13 +88,20 @@ const Footer = () => {
           <div className="space-y-4">
             <h4 className="text-white/90 text-xs font-semibold tracking-[0.2em] uppercase">Navigate</h4>
             <ul className="space-y-2.5">
-              {["Home", "How It Works", "Who It's For", "Apply Now"].map((link, i) => (
+              {[
+                { name: "Home", to: "/" },
+                { name: "How It Works", to: "/#how-it-works" },
+                { name: "Who It's For", to: "/#who-its-for" },
+                { name: "Discover", to: "/discover" },
+                { name: "Categories", to: "/discover#categories" },
+                { name: "Apply Now", to: "/join-pilot" },
+              ].map((link, i) => (
                 <li key={i}>
                   <Link 
-                    to={`/#${link.toLowerCase().replace(/\s+/g, '-').replace(/'/g, '')}`} 
+                    to={link.to} 
                     className="text-soft-sage/90 text-sm font-light hover:text-mint-green transition-colors duration-300"
                   >
-                    {link}
+                    {link.name}
                   </Link>
                 </li>
               ))}

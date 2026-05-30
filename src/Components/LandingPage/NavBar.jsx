@@ -18,7 +18,21 @@ const NavBar = () => {
 
         {/* Center: Navigation Links */}
         <div className="hidden lg:flex items-center gap-10">
-          {['Home', 'How it works', "Who it's for", "Growth Stories"].map((item) => (
+          <Link 
+            to="/" 
+            className="relative text-muted-dark-green font-medium text-[0.95rem] opacity-75 hover:opacity-100 hover:text-mint-green transition-all duration-300 group"
+          >
+            Home
+            <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-mint-green rounded-full transition-all duration-300 group-hover:w-full"></span>
+          </Link>
+          <Link 
+            to="/discover" 
+            className="relative text-muted-dark-green font-medium text-[0.95rem] opacity-75 hover:opacity-100 hover:text-mint-green transition-all duration-300 group"
+          >
+            Discover
+            <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-mint-green rounded-full transition-all duration-300 group-hover:w-full"></span>
+          </Link>
+          {['How it works', "Who it's for", "Growth Stories"].map((item) => (
             <Link 
               key={item}
               to={`/#${item.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-')}`} 

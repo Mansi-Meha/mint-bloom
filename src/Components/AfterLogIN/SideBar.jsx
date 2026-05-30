@@ -1,11 +1,38 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { LayoutGrid, BarChart2, Users, Package, Settings, LogOut, CircleUser } from 'lucide-react';
+import { LayoutGrid, BarChart2, Users, Package, Settings, LogOut, CircleUser, Store, ClipboardList } from 'lucide-react';
 
 const SideBar = () => {
   const location = useLocation();
+  const isAdminPath = location.pathname.startsWith('/admin');
 
-  const menuItems = [
+  const menuItems = isAdminPath ? [
+    {
+      name: 'Overview',
+      icon: <BarChart2 className="w-5 h-5" strokeWidth={1.5} />,
+      to: '/admin/overview',
+    },
+    {
+      name: 'Brands',
+      icon: <Users className="w-5 h-5" strokeWidth={1.5} />,
+      to: '/admin/brands',
+    },
+    {
+      name: 'Progress Tracker',
+      icon: <ClipboardList className="w-5 h-5" strokeWidth={1.5} />,
+      to: '/admin/tracker',
+    },
+    {
+      name: 'Storefronts',
+      icon: <Store className="w-5 h-5" strokeWidth={1.5} />,
+      to: '/admin/storefronts',
+    },
+    {
+      name: 'Products',
+      icon: <Package className="w-5 h-5" strokeWidth={1.5} />,
+      to: '/admin/products',
+    }
+  ] : [
     {
       name: 'Overview',
       icon: <BarChart2 className="w-5 h-5" strokeWidth={1.5} />,
@@ -38,17 +65,21 @@ const SideBar = () => {
 
   const tooltipClass = "absolute left-full ml-4 px-3 py-2 bg-white rounded-lg shadow-md border border-soft-sage/20 text-sm font-medium text-muted-dark-green whitespace-nowrap opacity-0 pointer-events-none translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 z-50";
 
-  const isActive = (path) => location.pathname === path;
+  const isActive = (path) => {
+    if (path === '/admin/overview' && (location.pathname === '/admin' || location.pathname === '/admin/')) return true;
+    if (path === '/dashboard/overview' && (location.pathname === '/dashboard' || location.pathname === '/dashboard/')) return true;
+    return location.pathname === path;
+  };
 
   return (
-    <div className="fixed left-4 top-1/2 -translate-y-1/2 h-[75vh] bg-white rounded-full shadow-lg border border-soft-sage/20 flex flex-col items-center py-6 z-50 font-primary w-20">
+    <div className={`fixed left-4 top-1/2 -translate-y-1/2 ${isAdminPath ? 'h-[88vh]' : 'h-[75vh]'} bg-white rounded-full shadow-lg border border-soft-sage/20 flex flex-col items-center py-6 z-50 font-primary w-20`}>
       {/* Top Logo / App Icon */}
-      <div className="flex items-center justify-center w-12 h-12 rounded-full bg-muted-dark-green text-white mb-8 shrink-0">
+      <div className={`flex items-center justify-center w-12 h-12 rounded-full bg-muted-dark-green text-white ${isAdminPath ? 'mb-4' : 'mb-8'} shrink-0`}>
         <LayoutGrid className="w-6 h-6" strokeWidth={2} />
       </div>
 
       {/* Main Menu Items */}
-      <div className="flex-1 w-full flex flex-col gap-6 mt-4">
+      <div className={`flex-1 w-full flex flex-col ${isAdminPath ? 'gap-4' : 'gap-6'} mt-2`}>
         {menuItems.map((item) => (
           <Link
             key={item.to}
@@ -70,7 +101,7 @@ const SideBar = () => {
       </div>
 
       {/* Bottom Actions */}
-      <div className="w-full flex flex-col gap-6 mb-6">
+      <div className={`w-full flex flex-col ${isAdminPath ? 'gap-4 mb-3' : 'gap-6 mb-6'}`}>
         {bottomItems.map((item, index) => {
           const content = (
             <>
@@ -94,8 +125,12 @@ const SideBar = () => {
           <CircleUser className="w-8 h-8" strokeWidth={1.5} />
         </div>
         <div className={`${tooltipClass} flex-col items-start !px-4 !py-3`}>
-          <span className="text-sm font-semibold text-muted-dark-green block">Mint User</span>
-          <span className="text-xs text-muted-dark-green/60 block">Admin</span>
+          <span className="text-sm font-semibold text-muted-dark-green block">
+            {isAdminPath ? 'Mint Admin' : 'Mint User'}
+          </span>
+          <span className="text-xs text-muted-dark-green/60 block">
+            {isAdminPath ? 'Platform Incubator' : 'Brand Owner'}
+          </span>
         </div>
       </div>
     </div>
